@@ -1,0 +1,40 @@
+{
+  "v1": {
+    "path": "/api/v1",
+    "services": {
+      "category": {
+        "host": "http://this_socks_catalog_backend.service.consul:2003"
+      },
+      "product": {
+        "host": "http://this_socks_catalog_backend.service.consul:2003"
+      },
+      "user": {
+        "host": "http://this_socks_client_backend.service.consul:2004"
+      },
+      "client": {
+        "host": "http://this_socks_client_backend.service.consul:2004"
+      },
+      "address": {
+        "host": "http://this_socks_client_backend.service.consul:2004"
+      },
+      "inventory": {
+        "host": "http://this_socks_inventory_backend.service.consul:2334"
+      },
+      "card": {
+        "host": "http://this_socks_payment_backend.service.consul:3344"
+      },
+      "payment": {
+        "host": "http://this_socks_payment_backend.service.consul:3344"
+      },
+      "review": {
+        "host": "http://this_socks_review_backend.service.consul:2018"
+      },
+      "recommendation": {
+        "host": "http://this_socks_recommendation_backend.service.consul:2020"
+      },
+      "order": {
+        "host": "http://this_socks_order_backend.service.consul:2444"
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "v1": {
+    "path": "/api/v1",
+    "services": {
+      "product": {
+        "host": "http://127.0.0.1:2003"
+      },
+      "category": {
+        "host": "http://127.0.0.1:2003"
+      },
+      "model": {
+        "host": "http://127.0.0.1:2003"
+      },
+      "recommendation": {
+        "host": "http://127.0.0.1:2020"
+      },
+      "review": {
+        "host": "http://127.0.0.1:2018"
+      },
+      "inventory": {
+        "host": "http://127.0.0.1:2334"
+      }
+    }
+  }
+}

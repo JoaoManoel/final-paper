@@ -1,0 +1,1 @@
+docker run -d -p 27017:27017 -v ./mongodata:/data/db --name this_socks_order_database mongo

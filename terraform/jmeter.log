@@ -1,0 +1,45 @@
+2018-07-29 11:19:53,235 INFO o.a.j.u.JMeterUtils: Setting Locale to en_EN
+2018-07-29 11:19:53,281 INFO o.a.j.JMeter: Loading user properties from: /Users/joaomanoel/Downloads/apache-jmeter-4.0/bin/user.properties
+2018-07-29 11:19:53,282 INFO o.a.j.JMeter: Loading system properties from: /Users/joaomanoel/Downloads/apache-jmeter-4.0/bin/system.properties
+2018-07-29 11:19:53,294 INFO o.a.j.JMeter: Copyright (c) 1998-2018 The Apache Software Foundation
+2018-07-29 11:19:53,295 INFO o.a.j.JMeter: Version 4.0 r1823414
+2018-07-29 11:19:53,295 INFO o.a.j.JMeter: java.version=1.8.0_121
+2018-07-29 11:19:53,295 INFO o.a.j.JMeter: java.vm.name=Java HotSpot(TM) 64-Bit Server VM
+2018-07-29 11:19:53,295 INFO o.a.j.JMeter: os.name=Mac OS X
+2018-07-29 11:19:53,295 INFO o.a.j.JMeter: os.arch=x86_64
+2018-07-29 11:19:53,295 INFO o.a.j.JMeter: os.version=10.13.6
+2018-07-29 11:19:53,295 INFO o.a.j.JMeter: file.encoding=UTF-8
+2018-07-29 11:19:53,295 INFO o.a.j.JMeter: Max memory     =6442450944
+2018-07-29 11:19:53,295 INFO o.a.j.JMeter: Available Processors =4
+2018-07-29 11:19:53,304 INFO o.a.j.JMeter: Default Locale=English (EN)
+2018-07-29 11:19:53,305 INFO o.a.j.JMeter: JMeter  Locale=English (EN)
+2018-07-29 11:19:53,305 INFO o.a.j.JMeter: JMeterHome=/Users/joaomanoel/Downloads/apache-jmeter-4.0
+2018-07-29 11:19:53,305 INFO o.a.j.JMeter: user.dir  =/Users/joaomanoel/Programming/personal_projects/This_Socks/terraform
+2018-07-29 11:19:53,305 INFO o.a.j.JMeter: PWD       =/Users/joaomanoel/Programming/personal_projects/This_Socks/terraform
+2018-07-29 11:19:53,410 INFO o.a.j.JMeter: IP: 192.168.2.1 Name: Joaos-Mac-mini.local FullName: 192.168.2.1
+2018-07-29 11:19:56,967 INFO o.a.j.g.a.LookAndFeelCommand: Installing Darcula LAF
+2018-07-29 11:19:57,002 INFO o.a.j.g.a.LookAndFeelCommand: Using look and feel: com.bulenkov.darcula.DarculaLaf [Darcula]
+2018-07-29 11:19:57,003 INFO o.a.j.JMeter: Setting LAF to: com.bulenkov.darcula.DarculaLaf
+2018-07-29 11:19:57,150 INFO o.a.j.JMeter: Loaded icon properties from org/apache/jmeter/images/icon.properties
+2018-07-29 11:19:58,885 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must contain the string: '.functions.'
+2018-07-29 11:19:58,886 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must not contain the string: '.gui.'
+2018-07-29 11:20:00,785 INFO o.a.j.JMeter: Loading file: /Users/joaomanoel/af/Test Plan_uservice4.jmx
+2018-07-29 11:20:00,787 INFO o.a.j.s.FileServer: Default base='/Users/joaomanoel/Programming/personal_projects/This_Socks/terraform'
+2018-07-29 11:20:00,791 INFO o.a.j.s.FileServer: Set new base='/Users/joaomanoel/af'
+2018-07-29 11:20:01,119 INFO o.a.j.s.SaveService: Testplan (JMX) version: 2.2. Testlog (JTL) version: 2.2
+2018-07-29 11:20:01,175 INFO o.a.j.s.SaveService: Using SaveService properties file encoding UTF-8
+2018-07-29 11:20:01,179 INFO o.a.j.s.SaveService: Using SaveService properties version 4.0
+2018-07-29 11:20:01,186 INFO o.a.j.s.SaveService: Loading file: /Users/joaomanoel/af/Test Plan_uservice4.jmx
+2018-07-29 11:20:01,227 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/html is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2018-07-29 11:20:01,227 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xhtml+xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2018-07-29 11:20:01,227 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2018-07-29 11:20:01,227 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2018-07-29 11:20:01,227 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/vnd.wap.wml is org.apache.jmeter.protocol.http.parser.RegexpHTMLParser
+2018-07-29 11:20:01,227 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/css is org.apache.jmeter.protocol.http.parser.CssParser
+2018-07-29 11:20:01,244 INFO o.a.j.s.FileServer: Set new base='/Users/joaomanoel/af'
+2018-07-29 11:20:05,526 INFO o.a.j.e.KeyToolUtils: keytool found at 'keytool'
+2018-07-29 11:20:05,527 INFO o.a.j.p.h.p.ProxyControl: HTTP(S) Test Script Recorder SSL Proxy will use keys that support embedded 3rd party resources in file /Users/joaomanoel/Downloads/apache-jmeter-4.0/bin/proxyserver.jks
+2018-07-29 11:20:06,253 INFO o.a.j.s.SampleResult: Note: Sample TimeStamps are START times
+2018-07-29 11:20:06,253 INFO o.a.j.s.SampleResult: sampleresult.default.encoding is set to ISO-8859-1
+2018-07-29 11:20:06,253 INFO o.a.j.s.SampleResult: sampleresult.useNanoTime=true
+2018-07-29 11:20:06,253 INFO o.a.j.s.SampleResult: sampleresult.nanoThreadSleep=5000

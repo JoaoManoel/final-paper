@@ -1,0 +1,1 @@
+protoc -I backend/protos/ backend/protos/email.proto --go_out=plugins=grpc:backend/protos

@@ -1,0 +1,56 @@
+##
+# You should look at the following URL's in order to grasp a solid understanding
+# of Nginx configuration files in order to fully unleash the power of Nginx.
+# http://wiki.nginx.org/Pitfalls
+# http://wiki.nginx.org/QuickStart
+# http://wiki.nginx.org/Configuration
+#
+# Generally, you will want to move this file somewhere, and start with a clean
+# file but keep this around for reference. Or just disable in sites-enabled.
+#
+# Please see /usr/share/doc/nginx-doc/examples/ for more detailed examples.
+##
+
+{{range services}} {{$name := .Name}} {{$service := service .Name}}
+{{ if $name | regexMatch "this_socks_*" }}
+upstream {{$name}} {
+  zone upstream-{{$name}} 64k;
+  {{range $service}}server {{.Address}}:{{.Port}} max_fails=3 fail_timeout=60 weight=1;
+  {{else}} server 127.0.0.1:65535; #force a 502 {{end}}
+} 
+{{else}}
+{{end}}
+{{end}}
+# Default server configuration
+#
+server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+
+	root /var/www/html;
+
+	index index.html index.htm index.nginx-debian.html;
+
+	server_name _;
+
+	location / {
+		# First attempt to serve request as file, then
+		# as directory, then fall back to displaying a 404.
+		try_files $uri $uri/ =404;
+	}
+
+  location /health/ {
+    default_type text/plain;
+    return 200 "happy and healthy :)\n";
+  }
+
+  {{range services}} {{$name := .Name}}
+  {{ if $name | regexMatch "this_socks_*" }}
+  location /{{$name}}/ {
+    proxy_pass http://{{$name}}/;
+  }
+  {{else}}
+  {{end}}
+  {{end}}
+
+}

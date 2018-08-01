@@ -1,0 +1,31 @@
+version: '3.6'
+services:
+  db:
+    restart: always
+    build:
+      context: database/
+    container_name: socks_catalog_db
+    environment:
+      - DB_USER=${DB_USER}
+      - DB_NAME=${DB_NAME}
+    volumes:
+      - "./database/pgdata:/var/lib/postgresql/data"
+  backend:
+    restart: always
+    build:
+      context: backend/
+      args:
+        - NODE_ENV=${NODE_ENV}
+        - PORT=${PORT}
+    container_name: socks_catalog
+    environment:
+      - DB_HOST=${DB_HOST}
+      - DB_USER=${DB_USER}
+      - DB_NAME=${DB_NAME}
+    depends_on:
+      - db
+    links:
+      - db
+    ports:
+      - "${PORT}:${PORT}"
+      #- "9229:9229"

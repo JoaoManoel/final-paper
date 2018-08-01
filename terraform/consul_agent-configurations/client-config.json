@@ -1,0 +1,38 @@
+{
+  "server": false,
+  "datacenter": "__DATACENTER__",
+  "node_name": "__NODE_NAME__",
+  "data_dir": "/tmp/consul",
+  "encrypt": "__ENCRYPT__",
+  "log_level": "INFO",
+  "enable_syslog": true,
+  "enable_script_checks": true,
+  "client_addr": "__CLIENT_ADDR__",
+  "bind_addr": "__BIND_ADDR__",
+  "retry_join": [
+    "__START_JOIN__"
+  ],
+  "checks": [
+    {
+      "id": "check_cpu_utilization",
+      "notes": "Greater than 50% warn, greater than 75% fail.",
+      "name": "CPU Utilization",
+      "args": ["/home/ubuntu/machine_status_scripts/cpu_utilization.sh"],
+      "interval": "15s"
+    },
+    {
+      "id": "check_mem_utilization",
+      "notes": "Greater than 50% warn, greater than 75% fail.",
+      "name": "MEM Utilization",
+      "args": ["/home/ubuntu/machine_status_scripts/mem_utilization.sh"],
+      "interval": "15s"
+    },
+    {
+      "id": "check_hdd_utilization",
+      "notes": "Greater than 50% warn, greater than 75% fail.",
+      "name": "HDD Utilization",
+      "args": ["/home/ubuntu/machine_status_scripts/hdd_utilization.sh"],
+      "interval": "15s"
+    }
+  ]
+}

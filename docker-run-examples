@@ -1,0 +1,171 @@
+Catalog Service
+  database:
+    docker run -d \
+    --name this_socks_catalog_database \
+    --network this-socks-overlay \
+    --env DB_USER=socks \
+    --env DB_NAME=socks_catalog \
+    --publish 5432:5432 \
+    --volume /tmp/pgdata:/var/lib/postgresql/data \
+    joaomanoel/this_socks_catalog_backend
+
+  backend:
+    docker run -d \
+    --name this_socks_catalog_backend \
+    --restart=always \
+    --network this-socks-overlay \
+    --dns 169.254.1.1 \
+    --env NODE_ENV=production \
+    --env DB_HOST=this_socks_catalog_database.service.consul \
+    --env DB_USER=socks \
+    --env DB_NAME=socks_catalog \
+    --env PORT=2003 \
+    joaomanoel/this_socks_catalog_backend
+
+Client Service
+  database:
+    docker run -d \
+    --name this_socks_client_database \
+    --network this-socks-overlay \
+    --env DB_USER=socks \
+    --env DB_NAME=socks_client \
+    --publish 5432:5432 \
+    --volume /tmp/pgdata:/var/lib/postgresql/data \
+    joaomanoel/this_socks_client_database
+  backend:
+    docker run -d \
+    --name this_socks_client_backend \
+    --restart=always \
+    --network this-socks-overlay \
+    --dns 169.254.1.1 \
+    --env NODE_ENV=production \
+    --env DB_HOST=this_socks_client_database.service.consul
+    --env DB_USER=socks \
+    --env DB_NAME=socks_client \
+    --env PORT=2004 \
+    joaomanoel/this_socks_client_backend
+
+Email Service  
+  docker run -d \
+  --name this_socks_email \
+  --restart=always \
+  --network this-socks-overlay \
+  joaomanoel/this_socks_email
+
+Inventory Service
+  database:
+    docker run -d \
+    --name this_socks_inventory_database \
+    --network this-socks-overlay \
+    --env DB_USER=socks \
+    --env DB_NAME=socks_inventory \
+    --publish 5432:5432 \
+    --volume tmp/pgdata:/var/lib/postgresql/data \
+    joaomanoel/this_socks_inventory_database
+
+  backend:
+    docker run -d \
+    --name this_socks_inventory_backend \
+    --restart=always \
+    --network this-socks-overlay \
+    --dns 169.254.1.1 \
+    --env RABBITMQ_SERVICE=this_socks_rabbitmq.service.consul \
+    --env DB_SERVICE=this_socks_inventory_database.service.consul \
+    --env DB_USER=socks \
+    --env DB_PASS= \
+    --env DB_NAME=socks_inventory \
+    --env PORT=2334 \
+    joaomanoel/this_socks_inventory_backend
+
+Order Service
+  dabatase:
+    docker run -d \
+    --name this_socks_order_database \ 
+    --network this-socks-overlay \
+    --publish 27017:27017 \
+    --volume tmp/mongodata:/data/db \
+    mongo
+
+  backend:
+    docker run -d \
+    --name this_socks_order_backend \
+    --restart=always \
+    --network this-socks-overlay \
+    --dns 169.254.1.1 \
+    --env RABBITMQ_SERVICE=this_socks_rabbitmq.service.consul \
+    --env EMAIL_SERVICE=this_socks_email.service.consul \
+    --env DB_SERVICE=this_socks_order_backend.service.consul \
+    --env DB_NAME=this_socks \
+    joaomanoel/this_socks_order_backend
+
+Payment Service
+  database:
+    docker run -d \
+    --name this_socks_payment_database \
+    --network this-socks-overlay \
+    --env DB_USER=socks \
+    --env DB_NAME=socks_payment \
+    --publish 5432:5432 \
+    --volume /tmp/pgdata/:/var/lib/postgresql/data \
+    joaomanoel/this_socks_payment_database
+
+  backend:
+    docker run -d \
+    --name this_socks_payment_backend \
+    --restart=always \
+    --network this-socks-overlay \
+    --dns 169.254.1.1 \
+    --env RABBITMQ_HOST=this_socks_rabbitmq.service.consul \
+    --env DB_USER=socks\
+    --env DB_PASS= \
+    --env DB_HOST=this_socks_payment_database.service.consul \
+    --env DB_PORT=5432 \
+    --env DB_NAME=socks_payment \
+    joaomanoel/this_socks_payment_backend
+
+Recommendation Service
+  database:
+    docker run -d \
+    --name this_socks_recommendation_database \
+    --network this-socks-overlay \
+    --env DB_USER=socks \
+    --env DB_NAME=socks_recommendation \
+    --publish 5432:5432 \
+    --volume /tmp/pgdata:/var/lib/postgresql/data \
+    joaomanoel/this_socks_recommendation_backend
+
+  backend:
+    docker run -d \
+    --name this_socks_recommendation_backend \
+    --restart=always \
+    --network this-socks-overlay \
+    --dns 169.254.1.1 \
+    --env RABBITMQ_SERVICE=this_socks_rabbitmq.service.consul \
+    --env DB_HOST=this_socks_order_database.service.consul \
+    --env DB_USER=socks \
+    --env DB_NAME=socks_recommendation \
+    --env PORT=2020 \
+    joaomanoel/this_socks_recommendation_backend
+  
+Review Service
+  database:
+    docker run -d \
+    --name this_socks_review_database \
+    --network this-socks-overlay \
+    --env DB_USER=socks \
+    --env DB_NAME=socks_review \
+    --publish 5432:5432 \
+    --volume /tmp/pgdata:/var/lib/postgresql/data \
+    joaomanoel/this_socks_review_database
+
+  backend:
+    docker run -d \
+    --name this_socks_review_backend \
+    --restart=always \
+    --network this-socks-overlay \
+    --dns 169.254.1.1 \
+    --env DB_HOST=this_socks_review_database.service.consul \
+    --env DB_USER=socks \
+    --env DB_NAME=socks_review \
+    --env PORT=2018 \
+    joaomanoel/this_socks_review_backend

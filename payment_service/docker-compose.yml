@@ -1,0 +1,31 @@
+version: '3.6'
+services:
+  db:
+    restart: always
+    build:
+      context: database/
+    container_name: socks_payment_db
+    environment:
+      - DB_USER=${DB_USER}
+      - DB_NAME=${DB_NAME}
+    volumes:
+      - "./database/pgdata:/var/lib/postgresql/data"
+  backend:
+    restart: always
+    build:
+      context: backend/
+      args:
+        - PORT=${PORT}
+    container_name: socks_payment
+    environment:
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_NAME=${DB_NAME}
+    depends_on:
+      - db
+    links:
+      - db
+    ports:
+      - "${PORT}:${PORT}"

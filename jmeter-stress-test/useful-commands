@@ -1,0 +1,15 @@
+JVM_ARGS="-Xms6g -Xmx6g" ~/Downloads/apache-jmeter-4.0/bin/jmeter -n -t ~/af/Test\ Plan.jmx -l ~/af/results.log -e -o ~/af/results_graph
+
+mkdir -p reports/{graph,logs}
+
+apache-jmeter-4.0/bin/jmeter -GJVM_ARGS="-Xms2g -Xmx2g" -n -t TestPlan.jmx -r -l reports/logs/ae.log -e -o reports/graph/ -Jserver.rmi.ssl.disable=true
+
+apache-jmeter-4.0/bin/jmeter -GJVM_ARGS="-Xms1g -Xm1g" -n -t Teste.jmx -R 10.0.2.133,10.0.2.213 -l reports/logs/2-120k.log -e -o reports/graph/ -Jserver.rmi.ssl.disable=true
+
+apache-jmeter-4.0/bin/jmeter-server -Jserver.rmi.ssl.disable=true -Djava.rmi.server.hostname=10.0.1.155
+
+-D[prop_name]=[value] - defines a java system property value.
+-J[prop name]=[value] - defines a local JMeter property.
+-G[prop name]=[value] - defines a JMeter property to be sent to all remote servers.
+
+

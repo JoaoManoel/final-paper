@@ -1,0 +1,47 @@
+version: '3.6'
+services:
+  db: 
+    restart: always
+    build: 
+      context: database/
+    container_name: socks_inventory_db
+    environment:
+      - DB_USER=${DB_USER}
+      - DB_NAME=${DB_NAME}
+    volumes:
+      - "./database/pgdata:/var/lib/postgresql/data"
+  rmq:
+    restart: always
+    image: rabbitmq:3-management
+    container_name: socks_rabbitmq
+    volumes:
+      - $PWD/storage/rabbitmq:/var/lib/rabbitmq
+    environment:
+      - RABBITMQ_ERLANG_COOKIE=This_is_my_secret_phrase
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+  backend:
+    restart: always
+    build:
+      context: backend/
+      args:
+        - PORT=${PORT}
+        - GIN_MODE=${GIN_MODE}
+    container_name: socks_inventory_backend
+    environment:
+      - DB_USER=${DB_USER}
+      - DB_NAME=${DB_NAME}
+      - DB_PORT=${DB_PORT}
+      - DB_HOST=${DB_HOST}
+      - DB_PASS=${DB_PASS}
+      - RABBITMQ_SERVICE=${RABBITMQ_SERVICE}
+      - RABBITMQ_USER=${RABBITMQ_USER}
+      - RABBITMQ_PASS=${RABBITMQ_PASS}
+    depends_on:
+      - db
+      - rmq
+    links:
+      - db
+      - rmq
+    ports:
+      - "${PORT}:${PORT}"
